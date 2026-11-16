@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Heart, Sparkles, Maximize2, X, Calendar, Layers, Clock, Award, Video } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { CHRONOLOGICAL_PHOTOS } from '../utils/photosData';
+import PremiumFrame from './PremiumFrame';
 
 export default function PhotoGallery({ photos = CHRONOLOGICAL_PHOTOS, onNext }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -170,7 +171,7 @@ export default function PhotoGallery({ photos = CHRONOLOGICAL_PHOTOS, onNext }) 
             </button>
 
             {/* Photo Container */}
-            <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative shadow-inner mt-7 bg-pink-50">
+            <PremiumFrame ratio="4 / 5" className="mt-7">
               <img
                 src={currentPhoto.url}
                 alt={currentPhoto.title}
@@ -179,7 +180,7 @@ export default function PhotoGallery({ photos = CHRONOLOGICAL_PHOTOS, onNext }) 
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50" />
 
               {/* Swipe instruction or End of scroll indicator */}
-              <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-lg flex items-center gap-1">
+              <div className="absolute bottom-2 right-2 z-40 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-lg flex items-center gap-1">
                 {isLastPhoto ? (
                   <>
                     <span>Tap/Swipe for Wish Video 🎬</span>
@@ -189,7 +190,7 @@ export default function PhotoGallery({ photos = CHRONOLOGICAL_PHOTOS, onNext }) 
                   <span>👈 Tap or Swipe for next photo 👉</span>
                 )}
               </div>
-            </div>
+            </PremiumFrame>
 
             {/* Polaroid Captions & Story */}
             <div className="w-full text-center pt-2 pb-0.5 flex flex-col items-center">
@@ -276,15 +277,17 @@ export default function PhotoGallery({ photos = CHRONOLOGICAL_PHOTOS, onNext }) 
                     transition={{ duration: 0.3, ease: 'easeOut' }}
                     className="absolute inset-0 bg-white rounded-3xl p-3 shadow-xl border-3 border-pink-100 flex flex-col items-center justify-between"
                   >
-                    <div className="w-full h-[78%] rounded-2xl overflow-hidden relative shadow-inner bg-pink-50">
-                      <img
-                        src={photo.url}
-                        alt={photo.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-2 left-2 bg-pink-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
-                        {photo.ageTag}
-                      </div>
+                    <div className="w-full h-[78%]">
+                      <PremiumFrame variant="rose" radius={18} className="h-full" windowClassName="h-full">
+                        <img
+                          src={photo.url}
+                          alt={photo.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-2 left-2 z-40 bg-pink-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
+                          {photo.ageTag}
+                        </div>
+                      </PremiumFrame>
                     </div>
                     <div className="w-full text-center py-1">
                       <h4 className="text-xs font-extrabold text-pink-600 font-['Itim',_cursive] truncate">
@@ -355,13 +358,13 @@ export default function PhotoGallery({ photos = CHRONOLOGICAL_PHOTOS, onNext }) 
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="w-full aspect-[3/4] max-h-[55vh] rounded-2xl overflow-hidden bg-pink-50 shadow-inner relative mt-2">
+              <PremiumFrame ratio="3 / 4" className="mt-5 max-h-[55vh]" windowClassName="max-h-[50vh]">
                 <img
                   src={lightboxPhoto.url}
                   alt={lightboxPhoto.title}
                   className="w-full h-full object-contain"
                 />
-              </div>
+              </PremiumFrame>
 
               <div className="w-full text-center mt-3 space-y-1">
                 <span className="inline-block px-2.5 py-0.5 bg-pink-100 text-pink-600 font-bold text-xs rounded-full font-['Itim',_cursive]">

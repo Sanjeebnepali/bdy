@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import WhiteKey from './WhiteKey';
 
 const GIFS = {
   standing: 'https://media1.tenor.com/m/mu5bMm7ZddAAAAAd/hello-kitty.gif',
@@ -56,7 +57,8 @@ export default function HelloKitty({ variant = 'standing', className = '', size 
 
   // No-card style: raw image with blend mode (legacy)
   return (
-    <div className={`relative inline-block animate-bounce-slow ${className}`}>
+    <div className={`relative inline-block ${className}`}>
+      <WhiteKey />
       <img
         src={src}
         alt={alt}
@@ -66,8 +68,8 @@ export default function HelloKitty({ variant = 'standing', className = '', size 
             setUseFallback(true);
           }
         }}
-        style={{ mixBlendMode: 'multiply', ...imgSize }}
-        className="w-28 md:w-36 h-auto object-contain select-none pointer-events-none"
+        style={{ filter: 'url(#white-to-alpha)', ...imgSize }}
+        className="w-28 md:w-36 h-auto object-contain select-none pointer-events-none animate-bounce-slow"
       />
     </div>
   );

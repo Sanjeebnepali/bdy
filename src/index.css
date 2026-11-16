@@ -61,3 +61,26 @@ body {
   background: radial-gradient(circle at 50% 20%, #FFF5F9 0%, #FCE7F3 60%, #FBCFE8 100%);
   min-height: 100vh;
 }
+
+/* ---- Premium birthday frame: glass shine sweep ---- */
+.pf-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 60%
+  );
+  background-size: 250% 100%;
+  background-position: 130% 0;
+  animation: pf-shine-move 5.5s ease-in-out infinite;
+}
+@keyframes pf-shine-move {
+  0%, 55% { background-position: 130% 0; }
+  100% { background-position: -30% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-shine { animation: none; opacity: 0; }
+}

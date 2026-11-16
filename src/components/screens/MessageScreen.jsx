@@ -5,6 +5,7 @@ import confetti from 'canvas-confetti';
 import { sound } from '../../utils/sound';
 const messageVideo = `${import.meta.env.BASE_URL}message-video.mp4`;
 import { TRANSPARENT_CUTOUTS } from '../../utils/photosData';
+import PremiumFrame from '../PremiumFrame';
 
 // --- Measured timing for videoplayback (2).mp4 (66s total) ---
 // 0s -> ~60.0s   : black background, gold "quote" text intro (nothing to key)
@@ -64,7 +65,7 @@ export default function MessageScreen({ name = 'My Oni', message = '' }) {
   const playStartTimeRef = useRef(null);
 
   const defaultText =
-    `Happy Birthday, My Friend! 🎉\n\nYou deserve all the happiness, love, and smiles in the world today and always. You have this special way of making everything around you brighter — your energy, your kindness, and your warm heart.\n\nYou've already worked so hard and done so much toward your dreams, and I hope your day is filled with joy, surprises, and moments that make your heart sing. You're truly one of a kind, and today we celebrate YOU! 👑💕\n\nI want you to never look back — always keep moving straight toward your dream until you reach it. I truly believe in you, and I know you have what it takes to reach the top of the mountain.\n\nWishing you endless laughter, success, and all the sweet things life has to offer! 🎂✨ I'll always be right here, cheering you on.\n\nWith Love, Your Friend 💕`;
+    `Happy Birthday, My Friend! 🎉\n\nYou deserve all the happiness, love, and smiles in the world today and always. You have this special way of making everything around you brighter — your energy, your kindness, and your warm heart.\n\nYou've already worked so hard and done so much toward your dreams, and I hope your day is filled with joy, surprises, and moments that make your heart sing. You're truly one of a kind, and today we celebrate YOU! 👑💕\n\nYou are completely independent, and you know what? You talk a lot, but I love to listen to you. I don't know why, but I just love it — that's why I sometimes call you randomly, without any reason. 📞💗\n\nSo please, never ever change yourself. You are perfect, you are good, you are talented, and you already know your way. Don't think too much about anything — just go forward. I want you to never look back — always keep moving straight toward your dream until you reach it. I truly believe in you, and I know you have what it takes to reach the top of the mountain.\n\nAnd sometimes, look into the mirror and see yourself through my eyes — see how beautiful you really are. Never judge yourself, and never think you're not good enough or not talented. You are the best of the best. 🪞✨\n\nWishing you endless laughter, success, and all the sweet things life has to offer! 🎂✨ I'll always be right here, cheering you on.\n\nWith Love, Your Friend 💕`;
 
   const letterText = message || defaultText;
 
@@ -394,7 +395,7 @@ export default function MessageScreen({ name = 'My Oni', message = '' }) {
               )}
 
               {/* Pure Video Stage - Clean Container Without Background Image Overlap */}
-              <div className="relative w-full aspect-[4/5] max-h-[60vh] rounded-2xl overflow-hidden shadow-md border-2 border-pink-200/80 bg-pink-50/60 flex items-center justify-center">
+              <PremiumFrame ratio="4 / 5" ribbon="🎂 Happy Birthday 🎂" className="mt-2 max-h-[64vh]" windowClassName="flex items-center justify-center max-h-[60vh]" shimmer={false}>
                 {/* Her photo, sized to naturally cover this whole card - matches her
                     portrait photo's own shape far better than the video's own tiny
                     landscape frame (640x360) would, which is what was forcing an
@@ -431,7 +432,7 @@ export default function MessageScreen({ name = 'My Oni', message = '' }) {
                   }}
                   className="relative z-10 w-full h-full object-contain select-none cursor-pointer"
                 />
-              </div>
+              </PremiumFrame>
             </motion.div>
           )}
         </AnimatePresence>
@@ -454,18 +455,18 @@ export default function MessageScreen({ name = 'My Oni', message = '' }) {
 
               {/* End Scene Hero Cutout Frame */}
               <div className="relative w-full max-w-[200px] flex justify-center py-1">
-                <div className="w-40 h-52 sm:w-48 sm:h-60 rounded-2xl overflow-hidden shadow-xl border-3 border-white bg-gradient-to-b from-rose-100 via-pink-100 to-amber-50 relative group">
+                <PremiumFrame ratio="4 / 5" ribbon="👑 Queen 👑" className="w-48 sm:w-56 mt-3">
                   <img
                     src={TRANSPARENT_CUTOUTS.royal}
                     alt="Birthday Queen Royal Portrait"
-                    className="w-full h-full object-cover object-top drop-shadow-xl"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-pink-950/40 via-transparent to-transparent opacity-60" />
-                  <div className="absolute bottom-2 left-2 right-2 bg-white/90 backdrop-blur-md rounded-lg py-0.5 px-2 text-[11px] font-extrabold text-pink-600 shadow-md border border-pink-200 flex items-center justify-center gap-1">
+                  <div className="absolute bottom-2 left-2 right-2 z-40 bg-white/90 backdrop-blur-md rounded-lg py-0.5 px-2 text-[11px] font-extrabold text-pink-600 shadow-md border border-pink-200 flex items-center justify-center gap-1">
                     <Heart className="w-3 h-3 fill-pink-500 text-pink-500 animate-pulse" />
                     <span>{name} ✨</span>
                   </div>
-                </div>
+                </PremiumFrame>
               </div>
 
               {/* Handwritten Letter Card */}

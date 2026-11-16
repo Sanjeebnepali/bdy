@@ -50,7 +50,7 @@ export default function LoaderScreen({ onDone }) {
             className="flex flex-col items-center text-center space-y-5"
           >
             {/* Hello Kitty GIF inside white card with pink border (matching reference) */}
-            <HelloKitty variant="airplane" size={180} card={true} />
+            <HelloKitty variant="airplane" size={180} card={false} />
 
             <h2
               className="text-xl md:text-2xl font-bold text-pink-500 font-['Itim',_cursive] tracking-wide"

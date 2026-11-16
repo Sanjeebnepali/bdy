@@ -18,7 +18,7 @@ export default function App() {
 
   const [config, setConfig] = useState({
     name: 'My Oni',
-    age: '19',
+    age: '21',
     message: '',
   });
 
@@ -31,7 +31,7 @@ export default function App() {
     if (urlName || urlAge || urlMsg) {
       setConfig({
         name: urlName || 'My Oni',
-        age: urlAge || '19',
+        age: urlAge || '21',
         message: urlMsg || '',
       });
     }

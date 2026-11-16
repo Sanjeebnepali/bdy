@@ -6,7 +6,7 @@ import GradientButton from '../GradientButton';
 import { sound } from '../../utils/sound';
 import { TRANSPARENT_CUTOUTS } from '../../utils/photosData';
 
-export default function IntroScreen({ name = 'My Oni', age = '19', onStart }) {
+export default function IntroScreen({ name = 'My Oni', age = '21', onStart }) {
   const handleClick = () => {
     sound.playPop();
     sound.startBgMusic();
@@ -74,7 +74,7 @@ export default function IntroScreen({ name = 'My Oni', age = '19', onStart }) {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex flex-col items-center justify-center"
           >
-            <HelloKitty variant="standing" size={140} card={true} />
+            <HelloKitty variant="standing" size={140} card={false} />
           </motion.div>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default function IntroScreen({ name = 'My Oni', age = '19', onStart }) {
           Happy Birthday, <span className="text-rose-500 underline decoration-pink-300 decoration-wavy">{name}</span>! 🎉 🎂
         </h1>
 
-        {/* "My Oni turns 19" Age Badge */}
+        {/* "My Oni turns 21" Age Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}

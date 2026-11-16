@@ -1,4 +1,5 @@
 import React from 'react';
+import WhiteKey from './WhiteKey';
 
 // Budding Pop (cute white sprout character with party hat holding birthday cake) GIFs
 const GIFS = {
@@ -10,12 +11,8 @@ export default function BunnyCake({ className = '', mood = 'normal', size = 220 
   const src = GIFS[mood] || GIFS.normal;
 
   return (
-    <div
-      className={`relative inline-block transition-transform duration-300 ${
-        mood === 'happy' ? 'animate-bounce' : 'animate-bounce-slow'
-      } ${className}`}
-      style={{ width: size, height: size }}
-    >
+    <div className={`relative inline-block ${className}`} style={{ width: size, height: size }}>
+      <WhiteKey />
       <img
         key={src}
         src={src}
@@ -24,8 +21,10 @@ export default function BunnyCake({ className = '', mood = 'normal', size = 220 
           e.target.onerror = null;
           e.target.src = '/bunny_cake.png';
         }}
-        style={{ mixBlendMode: 'multiply' }}
-        className="w-full h-full object-contain select-none pointer-events-none"
+        style={{ filter: 'url(#white-to-alpha)' }}
+        className={`w-full h-full object-contain select-none pointer-events-none ${
+          mood === 'happy' ? 'animate-bounce' : 'animate-bounce-slow'
+        }`}
       />
     </div>
   );
